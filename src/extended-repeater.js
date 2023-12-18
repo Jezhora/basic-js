@@ -2,15 +2,15 @@ const { NotImplementedError } = require('../extensions/index.js');
 
 /**
  * Create a repeating string based on the given parameters
- *  
+ *
  * @param {String} str string to repeat
- * @param {Object} options options object 
+ * @param {Object} options options object
  * @return {String} repeating string
- * 
+ *
  *
  * @example
- * 
- * repeater('STRING', { repeatTimes: 3, separator: '**', 
+ *
+ * repeater('STRING', { repeatTimes: 3, separator: '**',
  * addition: 'PLUS', additionRepeatTimes: 3, additionSeparator: '00' })
  * => 'STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS'
  *
@@ -22,14 +22,14 @@ function repeater(str, options) {
   } else {
     string = str;
   }
-  
+
   const strRepeat = options.repeatTimes ? options.repeatTimes : false;
   const strSeparator = options.separator;
   const strAddRepeat = options.additionRepeatTimes ? options.additionRepeatTimes : false;
   const strAddSeparator = options.additionSeparator;
 
   let strAdd;
-  
+
   for (let key in options) {
     if (key === 'addition') {
       strAdd = options.addition;
@@ -48,7 +48,7 @@ function repeater(str, options) {
   let stringToRepeat;
   let result;
 
-  if (strAdd) { 
+  if (strAdd) {
     if (strAddSeparator) {
       if(strAddRepeat) {
         addition = `${strAdd}${strAddSeparator}`
@@ -56,7 +56,7 @@ function repeater(str, options) {
       } else {
         addition = `${strAdd}${strAddSeparator}`.slice(0, -strAddSeparator.length);
       }
-  
+
     } else {
       if (strAddRepeat) {
       addition = `${strAdd}|`.repeat(strAddRepeat).slice(0,-1);
@@ -66,13 +66,13 @@ function repeater(str, options) {
     }
   }
 
-  if (strSeparator) { 
+  if (strSeparator) {
     if(addition) {
       stringToRepeat = `${string}${addition}${strSeparator}`;
     } else {
       stringToRepeat = `${string}${strSeparator}`
     }
-  
+
     if(strRepeat) {
       result = stringToRepeat.repeat(strRepeat).slice(0, -strSeparator.length);
     } else {
@@ -90,7 +90,7 @@ function repeater(str, options) {
     } else {
       result = stringToRepeat.slice(0,-1);
     }
-  } 
+  }
 
   return result;
 }
