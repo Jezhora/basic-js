@@ -16,8 +16,7 @@ function getSumOfDigits(n) {
   const summ = n
   .toString()
   .split('')
-  .map(item => +item)
-  .reduce((acc,item) => acc += item);
+  .reduce((acc,item) => acc + parseInt(item), 0);
 
   return summ > 9 ? getSumOfDigits(summ) : summ;
 }

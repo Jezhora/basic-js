@@ -22,7 +22,7 @@ function calculateHanoi(disksNumber, turnsSpeed) {
   const turnPerSec = turnsSpeed / 3600;
   hanoi.seconds = Math.floor(hanoi.turns / turnPerSec);
 
-  return hanoi
+  return hanoi;
 }
 // console.log(calculateHanoi(9, 4308))
 
